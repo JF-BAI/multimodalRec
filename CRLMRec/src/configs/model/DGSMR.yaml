@@ -1,0 +1,18 @@
+embedding_size: 64
+feat_embed_dim: 64
+weight_size: [64, 64]
+
+lambda_coeff: 0.9
+reg_weight: [1e-03] #1e-03 最优模态BPR损失的权重，一般不为0.0效果较好[1e-05, 1e-04, 1e-03]
+model_cat_rate: 0.55
+n_mm_layers: 2
+n_ui_layers: [3] #最优3
+knn_k: 10
+adj_type: 'pre'
+ssl_temp: [0.1,0.3,0.5,0.7,0.9,1.0] #在music上1.0最优，在patio上0.5最优  论文最优0.5 [0.1,0.2,0.5,1.0]
+ssl_alpha: [0.01] #[0.01] #两个数据集上最优的都是0.01 [0.5,0.3, 0.1, 0.03,0.01]  [0,0.01,0.1,0.3,0.5,0.7,1.0]
+
+mm_image_weight: [1.0] #视觉模态邻接矩阵权重原0.6  ,0.1[0.1,0.6,0.8,1.0]
+dropout: 0.7 #[0.6,0.7] #没用，加上去噪结构之后性能反而下降 原本是FREEDOM模型的剪枝率[0.8, 0.9]；修改使其成为DGSMR模型中的剪枝阈值0.7,0.8
+
+hyper_parameters: ["reg_weight", "ssl_temp", "ssl_alpha",mm_image_weight,n_ui_layers]
