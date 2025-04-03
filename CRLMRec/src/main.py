@@ -15,7 +15,7 @@ os.environ['NUMEXPR_MAX_THREADS'] = '48'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', '-m', type=str, default='BM3', help='name of models')
+    parser.add_argument('--model', '-m', type=str, default='DGSMR', help='name of models')
     parser.add_argument('--dataset', '-d', type=str, default='baby', help='name of datasets')
     parser.add_argument('--mg', action="store_true", help='whether to use Mirror Gradient, default is False')
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     }
 
     args, _ = parser.parse_known_args()
-#调用 quick_start 函数：传递模型名称、数据集名称、配置字典、是否保存模型以及是否使用镜像梯度。
+
     quick_start(model=args.model, dataset=args.dataset, config_dict=config_dict, save_model=True, mg=args.mg)#-->quick_start.py
 
 
